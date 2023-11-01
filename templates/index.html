@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Time Zone Converter</title>
+</head>
+<body>
+    <h1>Time Zone Converter</h1>
+    <form action="/convert" method="post">
+        <div class="converter-form">
+            <div class="select-time">
+                <label for="timezone">Select a Time Zone:</label>
+                <select name="timezone" id="timezone">
+                    <option value="">Select Time Zone</option>
+                    <option value="GMT">Greenwich Mean Time</option>
+                    <option value="IBST">International Business Standard Time</option>
+                </select>
+            </div>
+            <div class="convert-to">
+                <label for="target_timezone">Convert to Time Zone:</label>
+                <select name="target_timezone" id="target_timezone">
+                    <option value="">Select Time Zone</option>
+                    <!-- Add the time zones you provided in the dropdown -->
+                    <option value="GMT">Greenwich Mean Time</option>
+                    <option value="IBST">International Business Standard Time</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <label for="user_time">Select a Time:</label>
+        <select name="user_time" id="user_time">
+            <option value="">Select Time</option>
+            <option value="12:00 AM">12:00 AM</option>
+            <option value="01:00 AM">01:00 AM</option>
+            <option value="02:00 AM">02:00 AM</option>
+            <option value="11:00 PM">11:00 PM</option>
+        </select>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+    {% if converted_time %}
+        <p>Converted Time: {{ converted_time }}</p>
+    {% endif %}
+    {% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+</body>
+</html>
