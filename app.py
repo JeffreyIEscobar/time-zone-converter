@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# list of time zones for the dropdown menu
+# the list of time zones for the dropdown menu
 timezones = [
     "GMT",
     "IBST",
